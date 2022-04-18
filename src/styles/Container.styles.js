@@ -34,7 +34,15 @@ export const ContentContainer = styled.div`
 
 export const MidSection = styled.div`
     display: flex;
+    flex-direction: row;
     margin: 50px 0px;
+`;
+
+export const UpperSection = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
 `;
 
 
