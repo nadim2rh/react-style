@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
-import {CDStyled} from "../styles/Elements.styels";
+import {CDStyled, CdChildStyled, ExpiredStyled} from "../styles/Container.styles";
 
 
-export default function UseCountdown(){
-  const countDownDate = new Date("Apr 26, 2022 21:00:00").getTime();
+export default function UseCountdown(props){
+  const countDownDate = new Date(props.cdDate).getTime();
   const [countDown, setCountDown] = useState(countDownDate - new Date().getTime());
-
+  
   const countTimer = useCallback(() => {
     setCountDown(countDownDate - new Date().getTime());
   }, [countDownDate]);
@@ -26,11 +26,13 @@ export default function UseCountdown(){
 
   if(countDown > 0){
     return(
-      <CDStyled>{days} : {hours} : {minutes} : {seconds}</CDStyled>
+      <CDStyled>
+        <CdChildStyled>{days} : {hours} : {minutes} : {seconds}</CdChildStyled>
+      </CDStyled>
     );
   }else{
     return(
-      <CDStyled>😔You're late! Offer Expired!</CDStyled>
+      <CDStyled><ExpiredStyled>😔You're late! This offer expired!</ExpiredStyled></CDStyled>
     );
   }
 
